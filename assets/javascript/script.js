@@ -36,27 +36,23 @@ $("#add-train").on("submit", function (event) { //id on form listens to the form
     frequency = $("#frequency").val().trim();
     console.log("Frequency: " + frequency);
 
-    // localStorage.clear(); // does this need to be here for local storage only or also firebase
-    // localStorage.setItem("trainName", trainName); //this needed for firebase ? or only for local
-
-    database.ref().push({
+    // push to databse
+    database.ref("/train").push({
         trainName: trainName,
         originCity: originCity,
         destinationCity: destinationCity,
         firstTrain: firstTrain,
         frequency: frequency,
-        // dateAdded: firebase.databse.ServerValue.TIMESTAMP,
-        //     
-
     });
 
+    // reset form on submit
     $("#add-train")[0].reset();
-
 });
 
-
 // or use .on("child_added")
-database.ref().on("value", function (snapshot) {
+// grab values from database 
+database.ref("/train").on("value", function (snapshot) {
+    // clear values in div so it does not repeat values
     $("#add-train-info").empty();
     // console.log(snapshot);
     snapshot.forEach(function (data) { //data becomes each train as the parameter
@@ -79,18 +75,17 @@ database.ref().on("value", function (snapshot) {
         // getting val of frequency
         let frequency = data.val().frequency
         console.log("FREQUENCY: " + frequency);
-
+        // time apart to next train
         let tRemainder = diffTime % frequency;
-
         console.log("REMAINDER: " + tRemainder);
-
+        // to get how many minutes until the next train
         let minutesAway = frequency - tRemainder;
-
         console.log("MINUTES AWAY: " + minutesAway);
-
+        // time of next train
         let nextTrain = moment().add(minutesAway, "minutes");
         console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));;
 
+        // create variable with values from database as table
         var newRow =
             `<tr>
         <td>${data.val().trainName}</td>
@@ -103,8 +98,8 @@ database.ref().on("value", function (snapshot) {
             </tr>`
         // console.log(newRow);
 
+        // append table to add-train-info div
         $("#add-train-info").append(newRow);
 
     });
-
 });
