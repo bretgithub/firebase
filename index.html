@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Scheduler</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="jumbotron text-center col-md-10 offset-1">
+        <h1 class="display-3">Train Scheduler</h1>
+    </div>
+
+    <!-- start container for train form -->
+    <div class="container">
+        <div class="card m-2 mb-4" id="train-parameters">
+            <!-- start train form -->
+            <!-- <div class="card" id="train-form"> -->
+            <div class="card-header">
+                <span>Train Parameters</span>
+            </div>
+            <div class="card-body p-4">
+                <form id="add-train">
+                    <div class="form-group">
+                        <label for="name-train">Name that train</label>
+                        <select class="form-control" id="name-train" required>
+                            <option></option>
+                            <option>Divine</option>
+                            <option>Big Freeda</option>
+                            <option>Leigh Bowery</option>
+                            <option>Lady Bunny</option>
+                            <option>Janelle Monae</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="origin-city">Origin City</label>
+                        <select class="form-control" id="origin-city" required>
+                            <option></option>
+                            <option>San Francisco, CA</option>
+                            <option>Sonoma, CA</option>
+                            <option>Seattle, WA</option>
+                            <option>Bend, OR</option>
+                            <option>Palm Springs, CA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination-city">Destination City</label>
+                        <select class="form-control" id="destination-city" required>
+                            <option></option>
+                            <option>Sonoma, CA</option>
+                            <option>San Francisco, CA</option>
+                            <option>Palm Springs, CA</option>
+                            <option>Seattle, WA</option>
+                            <option>Bend, OR</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first-train-time">First Train Time: </label>
+                        <input type="time" class="form-control" id="first-train-time" aria-describedby="firstTrainTime"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="frequency">Frequency (minutes) </label>
+                        <input type="number" class="form-control" id="frequency" aria-describedby="frequencyInMinutes"
+                            placeholder="Enter train frequency in minutes" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-secondary border" id="submit-button">Submit</button>
+                            <button type="submit" class="btn btn-light border" id="clear-button">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /train form -->
+    </div>
+    <!-- /train form container -->
+
+    <!-- start train results container -->
+    <div class="container">
+        <!-- start train results -->
+        <div class="card m-2 mb-4" id="train-results">
+            <div class="card" id="train-results-header">
+                <div class="card-header">
+                    <!-- train results header -->
+                    <span>Train Schedule</span>
+                </div>
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-light">
+                        <!-- train table header -->
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Origin City</th>
+                            <th>Destination City</th>
+                            <th>First Train Time</th>
+                            <th>Frequency</th>
+                            <th>Next Arrival Time</th>
+                            <th>Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <!-- /train table header -->
+
+                    <!-- train input displays below -->
+                    <tbody id="add-train-info">
+                        <tr>
+                            <td>Slow Train</td>
+                            <td>Sonoma, CA</td>
+                            <td>Seattle, WA</td>
+                            <td>12:00 PM</td>
+                            <td>90 minutes</td>
+                            <td>9:10 PM</td>
+                            <td>45 minutes</td>
+                        </tr>
+                    </tbody>
+                    <!-- /train input -->
+                </table>
+            </div>
+        </div>
+        <!-- /train results -->
+    </div>
+
+    <!-- /train results container -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/javascript/script.js"></script>
+</body>
+
+
+</html>
