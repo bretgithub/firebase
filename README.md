@@ -16,6 +16,9 @@ The exercise had us manipulate:
 * Arrays
 * Debugging
 
+## GitHub Pages link
+https://bretgithub.github.io/firebase/
+
 ## Roadmap
 Intend to improve the styling to make the page more visually appealing
 
